@@ -15,6 +15,10 @@
 
 </head>
 <body>
-    @yield('content')
+    @include('includes.navigation')
+
+    <div role="main">
+        @yield('content')
+    </div>
 </body>
 </html>
