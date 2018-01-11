@@ -15,4 +15,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/login',)
+Auth::routes();
+
+Route::name('auth.login')->get('/login', function() {
+    return view('auth.login');
+});
+
+Route::name('auth.login')->post('/login', 'Auth\LoginController@login');
+
+Route::name('auth.logout')->get('/logout', 'Auth\LoginController@logout');
+
+Route::name('auth.register')->get('/register', function() {
+    dd("login");
+});
