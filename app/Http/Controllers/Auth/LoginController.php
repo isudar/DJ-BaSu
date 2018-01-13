@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Validator;
+use Auth;
 
 class LoginController extends Controller
 {
@@ -43,14 +44,14 @@ class LoginController extends Controller
     {
         $rules = [
             'email' => 'required|email',
-            'password' => 'required|alphaNum|min:2'
+            'password' => 'required|alphaNum'
         ];
 
         $validator = Validator::make($request->all(), $rules);
         if($validator->passes()) {
             if(Auth::attempt(['email' => $request->get('email'),
-                'password' => $request->get('email')], $request->get('remember_me'))) {
-                return $this->redirect()->url('/');
+                'password' => $request->get('password')], $request->get('remember_me'))) {
+                return redirect()->route('welcome');
             } else {
                 return redirect()
                     ->back()
@@ -65,5 +66,6 @@ class LoginController extends Controller
     public function logout()
     {
         Auth::logout();
+        return redirect()->route('auth.login');
     }
 }

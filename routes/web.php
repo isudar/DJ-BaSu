@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', function () {
+Route::name('welcome')->get('/', function () {
     return view('welcome');
 });
 
@@ -26,5 +26,7 @@ Route::name('auth.login')->post('/login', 'Auth\LoginController@login');
 Route::name('auth.logout')->get('/logout', 'Auth\LoginController@logout');
 
 Route::name('auth.register')->get('/register', function() {
-    dd("login");
+    return view('auth.register');
 });
+
+Route::name('auth.register')->post('/register', 'Auth\RegisterController@register');
