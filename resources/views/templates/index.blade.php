@@ -17,7 +17,7 @@
 <body>
     @include('includes.navigation')
 
-    <div role="main">
+    <div role="main" class="container">
         @yield('content')
     </div>
 </body>
