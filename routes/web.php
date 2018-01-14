@@ -15,7 +15,8 @@ Route::name('welcome')->get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+// Authentification
+//Auth::routes();
 
 Route::name('auth.login')->get('/login', function() {
     return view('auth.login');
@@ -30,3 +31,5 @@ Route::name('auth.register')->get('/register', function() {
 });
 
 Route::name('auth.register')->post('/register', 'Auth\RegisterController@register');
+
+Route::name('dashboard')->get('/dashboard', 'DashboardController@');

@@ -72,15 +72,4 @@ class RegisterController extends Controller
         ]);
     }
 
-//    public function register(Request $request)
-//    {
-//        $data = $request->all();
-//        $validator = $this->validator($data);
-//        if($validator->passes()) {
-//            $this->create($data);
-//            return redirect()->route('auth.login');
-//        } else {
-//            return redirect()->back()->withInput()->withErrors($validator);
-//        }
-//    }
 }
