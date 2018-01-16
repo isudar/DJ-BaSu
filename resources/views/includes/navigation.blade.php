@@ -11,17 +11,20 @@
             </li>
             @auth
             <li class="nav-item">
-                <a class="nav-link" href="#">Dashboard</a>
+                <a class="nav-link" href="{{ route('user.dashboard') }}">Dashboard</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('auth.logout') }}">Logout</a>
+                <a class="nav-link" href="{{ route('my.logout') }}">Logout</a>
             </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"></a>
+                </li>
             @else
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('auth.login') }}">Login</a>
+                    <a class="nav-link" href="{{ route('login') }}">Login</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('auth.register') }}">Register</a>
+                    <a class="nav-link" href="{{ route('register') }}">Register</a>
                 </li>
             @endauth
         </ul>

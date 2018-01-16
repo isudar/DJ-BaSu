@@ -15,21 +15,33 @@ Route::name('welcome')->get('/', function () {
     return view('welcome');
 });
 
-// Authentification
-//Auth::routes();
+//// Authentification
+//
+//Route::middleware('guest')->namespace('Auth')->group(function () {
+//
+//    Route::name('auth.login')->get('/login', function() {
+//        return view('auth.login');
+//    });
+//
+//    Route::name('auth.login')->post('/login', 'LoginController@login');
+//
+//    Route::name('auth.register')->get('/register', function() {
+//        return view('auth.register');
+//    });
+//
+//    Route::name('auth.register')->post('/register', 'RegisterController@register');
+//});
 
-Route::name('auth.login')->get('/login', function() {
-    return view('auth.login');
+Route::name('my.logout')->get('/logout', 'Auth\LoginController@logout');
+
+Route::prefix('user')->group(function () {
+
+    Route::middleware('auth')->group( function () {
+
+        Route::name('user.dashboard')->get('/dashboard', 'DashboardController@index');
+    });
 });
 
-Route::name('auth.login')->post('/login', 'Auth\LoginController@login');
+Auth::routes();
 
-Route::name('auth.logout')->get('/logout', 'Auth\LoginController@logout');
-
-Route::name('auth.register')->get('/register', function() {
-    return view('auth.register');
-});
-
-Route::name('auth.register')->post('/register', 'Auth\RegisterController@register');
-
-Route::name('dashboard')->get('/dashboard', 'DashboardController@');
+Route::get('/home', 'HomeController@index')->name('home');

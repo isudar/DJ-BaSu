@@ -28,7 +28,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = 'user/dashboard/';
 
     /**
      * Create a new controller instance.
@@ -40,32 +40,32 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-    public function login(Request $request)
-    {
-        $rules = [
-            'email' => 'required|email',
-            'password' => 'required|alphaNum'
-        ];
-
-        $validator = Validator::make($request->all(), $rules);
-        if($validator->passes()) {
-            if(Auth::attempt(['email' => $request->get('email'),
-                'password' => $request->get('password')], $request->get('remember_me'))) {
-                return redirect()->route('welcome');
-            } else {
-                return redirect()
-                    ->back()
-                    ->withInput()
-                    ->with('message', 'The email and password you entered don\'t match.');
-            }
-        } else {
-            return redirect()->route('auth.login');
-        }
-    }
+//    public function login(Request $request)
+//    {
+//        $rules = [
+//            'email' => 'required|email',
+//            'password' => 'required|alphaNum'
+//        ];
+//
+//        $validator = Validator::make($request->all(), $rules);
+//        if($validator->passes()) {
+//            if(Auth::attempt(['email' => $request->get('email'),
+//                'password' => $request->get('password')], $request->get('remember_me'))) {
+//                return redirect()->route('welcome');
+//            } else {
+//                return redirect()
+//                    ->back()
+//                    ->withInput()
+//                    ->with('message', 'The email and password you entered don\'t match.');
+//            }
+//        } else {
+//            return redirect()->route('auth.login');
+//        }
+//    }
 
     public function logout()
     {
         Auth::logout();
-        return redirect()->route('auth.login');
+        return redirect()->route('login');
     }
 }
