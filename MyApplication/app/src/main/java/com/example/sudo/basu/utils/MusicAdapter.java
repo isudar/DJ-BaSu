@@ -26,7 +26,7 @@ public class MusicAdapter extends BaseAdapter {
     private Context context;
     private List<Music> musics;
 
-    public MusicAdapter(List<Music> context, pjesme musics) {
+    public MusicAdapter(Context context, List<Music> musics) {
         this.context = context;
         this.musics = musics;
     }

@@ -30,7 +30,7 @@ public class pjesme extends Activity {
 
         final List<Music> musics = databaseHelper.getMusics();
 
-        final MusicAdapter musicAdapter = new MusicAdapter(musics, this);
+        final MusicAdapter musicAdapter = new MusicAdapter(this, musics);
 
         lvGlazba.setAdapter(musicAdapter);
     }
