@@ -11,6 +11,7 @@ import com.example.sudo.basu.models.Playlist;
 import com.example.sudo.basu.utils.DatabaseHelper;
 import com.example.sudo.basu.utils.PlaylistAdapter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class playliste extends Activity {
@@ -30,7 +31,10 @@ public class playliste extends Activity {
 
         databaseHelper = DatabaseHelper.getInstance(this);
 
-        final List<Playlist> playlists = databaseHelper.getPlaylists();
+        //final List<Playlist> playlists = databaseHelper.getPlaylists();
+
+        List<Playlist> playlists = new ArrayList<Playlist>();
+        playlists.add(new Playlist((long) 1, "Kuca"));
 
 
         final PlaylistAdapter playlistAdapter = new PlaylistAdapter(playlists, this);

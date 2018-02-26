@@ -73,7 +73,6 @@ public class MusicAdapter extends BaseAdapter {
             tvImeItem = (TextView) view.findViewById(R.id.tvImeItem);
             tvArtist  = (TextView) view.findViewById(R.id.tvArtist);
             tvDuration = (TextView) view.findViewById(R.id.tvDuration);
-            ibPlay = (ImageButton) view.findViewById(R.id.ibPlay);
             ibDelete = (ImageButton) view.findViewById(R.id.ibDelete);
         }
     }

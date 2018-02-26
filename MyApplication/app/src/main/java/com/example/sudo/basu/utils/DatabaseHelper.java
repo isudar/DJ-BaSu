@@ -54,9 +54,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String COLUMN_CITY = "city";
 
     /**
-     * House table
+     * Playlist table
      */
-    private static final String COLUMN_LIST_NAME = "list name";
+    private static final String COLUMN_LIST_NAME = "list_name";
     private static final String COLUMN_HOUSE_ID = "house_id";
 
     /**
@@ -95,6 +95,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(CREATE_TABLE_HOUSE);
         db.execSQL(CREATE_TABLE_PLAYLIST);
         db.execSQL(CREATE_TABLE_MUSIC);
+
+
     }
 
     @Override
@@ -105,6 +107,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         onCreate(db);
     }
+
 
     public List<Playlist> getPlaylists() {
         List<Playlist> playlists = new ArrayList<>();
@@ -140,10 +143,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                         cursor.getString(3)
 
                 );
+                musics.add(music);
             }while (cursor.moveToNext());
         }
         cursor.close();
         databaseHelper.close();
         return musics;
     }
+
+
 }
